@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>YUI</title>
     <script src="blockdata/blocks.js"></script>
-    <script src="js/closestBlock.js"></script>
-    <script src="js/gradientCalculator.js"></script>
+    <script src="js/blockGradient/closestBlock.js"></script>
+    <script src="js/blockGradient/gradientCalculator.js"></script>
+    <script src="js/blockGradient/index.js"></script>
     <link rel="stylesheet" href="style/app.css">
 </head>
 <body>
@@ -17,9 +18,7 @@
         <input type="submit" value="Search">
     </form>
 
-    <div id="outputContainer">
-
-    </div>
+    <div id="outputContainer"></div>
 
     <script>
 
@@ -36,17 +35,17 @@
         const onSearchFormSubmit = () => {
             const gradientStartColor = hexToRgb(startColorPickerElement.value)
             const gradientEndColor = hexToRgb(endColorPickerElement.value)
-            const colorSteps = calculateGradientSteps(gradientStartColor, gradientEndColor, 5)
 
             outputContainer.innerHTML = ''
 
-            for (const step of colorSteps) {
-                const stepBlock = mostSimilarBlock(step)
-                const stepBlockId = stepBlock['id']
+            const blockGradient = blockGradientFromColors(gradientStartColor, gradientEndColor, 10)
+
+            for (const block of blockGradient) {
+                const blockId = block['id']
 
                 const blockImage = document.createElement('img')
-                blockImage.setAttribute('src', `/blockdata/images/${stepBlockId}`)
-                blockImage.setAttribute('alt', `Block with id ${stepBlockId}`)
+                blockImage.setAttribute('src', `/blockdata/images/${blockId}`)
+                blockImage.setAttribute('alt', `Block with id ${blockId}`)
                 outputContainer.appendChild(blockImage)
             }
 
