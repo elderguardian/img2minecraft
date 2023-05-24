@@ -15,15 +15,20 @@
         <input type="color" id="startColorPicker"><br>
         <label for="endColorPicker">End of the gradient:</label>
         <input type="color" id="endColorPicker"><br>
+        <label for="blockRange">Amount of blocks</label>
+        <input type="range" id="blockRange" min="1" max="15"><br>
         <input type="submit" value="Search">
     </form>
 
-    <div id="outputContainer"></div>
+    <div id="outputContainer">
+
+    </div>
 
     <script>
 
         const startColorPickerElement = document.getElementById('startColorPicker')
         const endColorPickerElement = document.getElementById('endColorPicker')
+        const blockRangeElement = document.getElementById('blockRange')
         const outputContainer = document.getElementById('outputContainer')
 
         const hexToRgb = hex => [
@@ -35,10 +40,11 @@
         const onSearchFormSubmit = () => {
             const gradientStartColor = hexToRgb(startColorPickerElement.value)
             const gradientEndColor = hexToRgb(endColorPickerElement.value)
+            const steps = blockRangeElement.value
 
             outputContainer.innerHTML = ''
 
-            const blockGradient = blockGradientFromColors(gradientStartColor, gradientEndColor, 10)
+            const blockGradient = blockGradientFromColors(gradientStartColor, gradientEndColor, steps)
 
             for (const block of blockGradient) {
                 const blockId = block['id']
