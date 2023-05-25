@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YUI</title>
+    <script src="blockdata/blocks.js"></script>
+    <script src="js/closestBlock.js"></script>
+    <script src="js/mapArt.js"></script>
+    <link rel="stylesheet" href="style/app.css">
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        th, td, img {
+            padding: 0;
+            width: 7px;
+            height: 7px;
+        }
+
+        img {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <label for="imageUploadInput">File</label>
+    <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file">
+</div>
+
+<div id="outputContainer">
+
+</div>
+
+<script>
+
+    const imageUploadInput = document.getElementById('imageUploadInput')
+
+    const onImageChange = async () => {
+        const mapSize = 128
+
+        const imageFile = imageUploadInput.files[0]
+        const imageOnCanvas = await resizeOnCanvas(imageFile, mapSize, mapSize)
+
+        document.querySelector('#outputContainer').innerHTML = ''
+        const table = generateTable(imageOnCanvas)
+        document.querySelector('#outputContainer').appendChild(table)
+
+    }
+
+</script>
+</body>
+</html>
