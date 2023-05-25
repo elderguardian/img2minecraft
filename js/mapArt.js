@@ -20,7 +20,6 @@ const resizeOnCanvas = async (imageFile, width, height) => {
 
 const generateTable = canvas => {
     const canvasContext = canvas.getContext('2d')
-    const rawColorData = canvasContext.getImageData(0, 0, canvas.width, canvas.height).data
     const mapTable = document.createElement('table')
     mapTable.setAttribute('cellspacing', '0')
     mapTable.setAttribute('cellpadding', '0')
@@ -30,12 +29,12 @@ const generateTable = canvas => {
 
         for (let column = 0; column < canvas.width; column++) {
             const cellElement = rowElement.insertCell()
-            const pixelStart = (canvas.width * 4 * row-1) + ((column-1) * 4)
+            const rawPixelData= canvasContext.getImageData(column, row, 1, 1).data
 
             const currentPixel = [
-                rawColorData[pixelStart],
-                rawColorData[pixelStart + 1],
-                rawColorData[pixelStart + 2],
+                rawPixelData[0],
+                rawPixelData[1],
+                rawPixelData[2],
             ]
 
             const closestBlock = mostSimilarBlock(currentPixel)
