@@ -47,7 +47,7 @@ const generateTable = canvas => {
     mapTable.setAttribute('cellspacing', '0')
     mapTable.setAttribute('cellpadding', '0')
 
-    for (let row = 0; row < canvas.width; row++) {
+    for (let row = 0; row < canvas.height; row++) {
         const rowElement = mapTable.insertRow()
 
         for (let column = 0; column < canvas.width; column++) {
