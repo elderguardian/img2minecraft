@@ -48,12 +48,11 @@
     const imageUploadInput = document.getElementById('imageUploadInput')
 
     const onImageChange = async () => {
-        const mapSize = 128
-
         const imageFile = imageUploadInput.files[0]
-        const imageOnCanvas = await resizeOnCanvas(imageFile, mapSize, mapSize)
+        const imageOnCanvas = await imageOnSmallCanvas(imageFile, 100, 100)
 
         document.querySelector('#outputContainer').innerHTML = ''
+        document.querySelector('#outputContainer').appendChild(imageOnCanvas)
         const table = generateTable(imageOnCanvas)
         document.querySelector('#outputContainer').appendChild(table)
 
