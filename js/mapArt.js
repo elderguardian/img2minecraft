@@ -1,3 +1,9 @@
+
+const imageToMinecraft = async imageFile => {
+    const canvas = await imageOnSmallCanvas(imageFile, 100, 100)
+    return generateTable(canvas)
+}
+
 const scaleImageSize = (width, height, maxWidth, maxHeight) => {
     let newSize = {width, height}
     let ratio = 0
