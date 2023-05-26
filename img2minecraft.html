@@ -35,6 +35,7 @@
 <body>
 
 <div>
+    <h1>Image 2 minecraft</h1>
     <label for="imageUploadInput">File</label>
     <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
 </div>
@@ -48,15 +49,9 @@
     const imageUploadInput = document.getElementById('imageUploadInput')
 
     const onImageChange = async () => {
-        const mapSize = 128
-
         const imageFile = imageUploadInput.files[0]
-        const imageOnCanvas = await resizeOnCanvas(imageFile, mapSize, mapSize)
-
-        document.querySelector('#outputContainer').innerHTML = ''
-        const table = generateTable(imageOnCanvas)
+        const table = await imageToMinecraft(imageFile)
         document.querySelector('#outputContainer').appendChild(table)
-
     }
 
 </script>

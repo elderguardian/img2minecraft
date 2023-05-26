@@ -1,16 +1,45 @@
-const resizeOnCanvas = async (imageFile, width, height) => {
+
+const imageToMinecraft = async imageFile => {
+    const canvas = await imageOnSmallCanvas(imageFile, 100, 100)
+    return generateTable(canvas)
+}
+
+const scaleImageSize = (width, height, maxWidth, maxHeight) => {
+    let newSize = {width, height}
+    let ratio = 0
+
+    if (width > maxWidth) {
+        ratio = maxWidth / width
+
+        newSize.width = maxWidth
+        newSize.height = height * ratio
+    }
+
+    if (height > maxHeight) {
+        ratio = maxHeight / height
+
+        newSize.height = maxHeight
+        newSize.width = width * ratio
+    }
+
+    return newSize
+}
+
+const imageOnSmallCanvas = async (imageFile, maxWidth, maxHeight) => {
 
     //wait for image to load using promise, then put on canvas and resize
-    const imageOnCanvas = (imageFile, width, height) =>  new Promise(resolve => {
+    const imageOnCanvas = imageFile => new Promise(resolve => {
         const canvas = document.createElement('canvas')
         const image = new Image()
         image.src = window.webkitURL.createObjectURL(imageFile)
-        image.onload = () => resolve({ image, canvas })
+        image.onload = () => resolve({image, canvas})
     })
 
-    const {canvas,image} = await imageOnCanvas(imageFile, width, height)
-    canvas.width = width
-    canvas.height = height
+    const {canvas, image} = await imageOnCanvas(imageFile)
+
+    const newImageSize = scaleImageSize(image.width, image.height, maxWidth, maxHeight)
+    canvas.width = newImageSize.width
+    canvas.height = newImageSize.height
 
     const canvasContext = canvas.getContext('2d')
     canvasContext.drawImage(image, 0, 0, canvas.width, canvas.height)
@@ -24,7 +53,7 @@ const generateTable = canvas => {
     mapTable.setAttribute('cellspacing', '0')
     mapTable.setAttribute('cellpadding', '0')
 
-    for (let row = 0; row < canvas.width; row++) {
+    for (let row = 0; row < canvas.height; row++) {
         const rowElement = mapTable.insertRow()
 
         for (let column = 0; column < canvas.width; column++) {
