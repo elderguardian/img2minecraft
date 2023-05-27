@@ -1,7 +1,8 @@
 
 const imageToMinecraft = async imageFile => {
     const canvas = await imageOnSmallCanvas(imageFile, 100, 100)
-    return generateTable(canvas)
+    document.querySelector('body').appendChild(canvas)
+    return await canvasToMinecraft(canvas)
 }
 
 const scaleImageSize = (width, height, maxWidth, maxHeight) => {
@@ -47,34 +48,34 @@ const imageOnSmallCanvas = async (imageFile, maxWidth, maxHeight) => {
     return canvas
 }
 
-const generateTable = canvas => {
+const canvasToMinecraft = async canvas => {
     const canvasContext = canvas.getContext('2d')
-    const mapTable = document.createElement('table')
-    mapTable.setAttribute('cellspacing', '0')
-    mapTable.setAttribute('cellpadding', '0')
 
-    for (let row = 0; row < canvas.height; row++) {
-        const rowElement = mapTable.insertRow()
+    const resultCanvas = document.createElement('canvas')
+    const resultCanvasContext = resultCanvas.getContext('2d')
+    //resultCanvasContext.imageSmoothingEnabled = false
+    resultCanvas.width = canvas.width * 16
+    resultCanvas.height = canvas.height * 16
 
-        for (let column = 0; column < canvas.width; column++) {
-            const cellElement = rowElement.insertCell()
-            const rawPixelData= canvasContext.getImageData(column, row, 1, 1).data
+    const loadedImage = src => new Promise(resolve => {
+        const image = new Image()
+        image.src = src
+        image.onload = () => resolve(image)
+    })
 
-            const currentPixel = [
-                rawPixelData[0],
-                rawPixelData[1],
-                rawPixelData[2],
-            ]
+    for (let row = 0; row < canvas.width; row++) {
+        for (let column = 0; column < canvas.height; column++) {
+            const pixelDataRgba = canvasContext.getImageData(row,  column, 1, 1).data
+            const pixelDataRgb = pixelDataRgba.subarray(0, 3)
 
-            const closestBlock = mostSimilarBlock(currentPixel)
+            console.log(`got ${pixelDataRgba}, is now ${pixelDataRgb}`)
 
-            const blockImage = document.createElement('img')
-            blockImage.src = `blockdata/images/${closestBlock['id']}`
+            const closestBlock = mostSimilarBlock(pixelDataRgb)
+            const blockImage = await loadedImage(`blockdata/images/${closestBlock['id']}`)
 
-            cellElement.appendChild(blockImage)
+            resultCanvasContext.drawImage(blockImage,row*16,column*16,16,16)
         }
-
     }
 
-    return mapTable
+    return resultCanvas
 }
