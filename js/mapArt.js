@@ -67,12 +67,8 @@ const canvasToMinecraft = async canvas => {
         for (let column = 0; column < canvas.height; column++) {
             const pixelDataRgba = canvasContext.getImageData(row,  column, 1, 1).data
             const pixelDataRgb = pixelDataRgba.subarray(0, 3)
-
-            console.log(`got ${pixelDataRgba}, is now ${pixelDataRgb}`)
-
             const closestBlock = mostSimilarBlock(pixelDataRgb)
             const blockImage = await loadedImage(`blockdata/images/${closestBlock['id']}`)
-
             resultCanvasContext.drawImage(blockImage,row*16,column*16,16,16)
         }
     }
