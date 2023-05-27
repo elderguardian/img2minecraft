@@ -4,3 +4,7 @@ img {
     height: 64px;
     image-rendering: crisp-edges;
 }
+
+canvas {
+    image-rendering: crisp-edges;
+}

@@ -50,6 +50,7 @@
 
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
+        document.querySelector('#outputContainer').innerHTML = ''
         const table = await imageToMinecraft(imageFile)
         document.querySelector('#outputContainer').appendChild(table)
     }
