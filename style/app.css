@@ -7,4 +7,5 @@ img {
 
 canvas {
     image-rendering: crisp-edges;
+    width: 60%;
 }

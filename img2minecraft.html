@@ -36,6 +36,7 @@
 
 <div>
     <h1>Image 2 minecraft</h1>
+    <p>Click on converted image to download</p>
     <label for="imageUploadInput">File</label>
     <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
 </div>
@@ -47,12 +48,25 @@
 <script>
 
     const imageUploadInput = document.getElementById('imageUploadInput')
+    const outputContainerElement = document.querySelector('#outputContainer')
+
+    const downloadCanvas = (canvas, name) => {
+        const downloadLink = document.createElement('a')
+        downloadLink.href = canvas.toDataURL('image/png')
+        downloadLink.download = name
+        downloadLink.click()
+    }
 
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
-        document.querySelector('#outputContainer').innerHTML = ''
-        const table = await imageToMinecraft(imageFile)
-        document.querySelector('#outputContainer').appendChild(table)
+
+        outputContainerElement.innerHTML = ''
+
+        const resultCanvas = await imageToMinecraft(imageFile)
+        const randomFileName = (Math.random() + 1).toString(36).substring(7)
+        resultCanvas.onclick = () => downloadCanvas(resultCanvas, randomFileName)
+
+        outputContainerElement.appendChild(resultCanvas)
     }
 
 </script>
