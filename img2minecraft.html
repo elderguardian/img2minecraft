@@ -58,11 +58,8 @@
         resultCanvas.id = 'convertedImageCanvas'
 
         const downloadButton = document.createElement('button')
-        downloadButton.onclick = () => {
-            window.location.href = resultCanvas
-                .toDataURL("image/png")
-                .replace("image/png", "image/octet-stream");
-        }
+        downloadButton.onclick = () => window.open(resultCanvas.toDataURL("image/png"))
+        downloadButton.innerText = 'Download'
 
         outputContainerElement.appendChild(downloadButton)
         outputContainerElement.appendChild(resultCanvas)
