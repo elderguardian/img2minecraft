@@ -47,12 +47,25 @@
 <script>
 
     const imageUploadInput = document.getElementById('imageUploadInput')
+    const outputContainerElement = document.querySelector('#outputContainer')
 
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
-        document.querySelector('#outputContainer').innerHTML = ''
-        const table = await imageToMinecraft(imageFile)
-        document.querySelector('#outputContainer').appendChild(table)
+
+        outputContainerElement.innerHTML = ''
+
+        const resultCanvas = await imageToMinecraft(imageFile)
+        resultCanvas.id = 'convertedImageCanvas'
+
+        const downloadButton = document.createElement('button')
+        downloadButton.onclick = () => {
+            window.location.href = resultCanvas
+                .toDataURL("image/png")
+                .replace("image/png", "image/octet-stream");
+        }
+
+        outputContainerElement.appendChild(downloadButton)
+        outputContainerElement.appendChild(resultCanvas)
     }
 
 </script>
