@@ -1,7 +1,6 @@
 
 const imageToMinecraft = async imageFile => {
     const canvas = await imageOnSmallCanvas(imageFile, 100, 100)
-    document.querySelector('body').appendChild(canvas)
     return await canvasToMinecraft(canvas)
 }
 
