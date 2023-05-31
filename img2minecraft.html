@@ -7,43 +7,69 @@
     <script src="js/closestBlock.js"></script>
     <script src="js/mapArt.js"></script>
     <link rel="stylesheet" href="style/app.css">
+    <link rel="stylesheet" href="pico/pico.min.css">
     <style>
 
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
+        main {
+            padding-top: 2rem !important;
+            padding-bottom: 0 !important;
         }
 
-        table {
-            border-spacing: 0;
-            border-collapse: collapse;
+        article {
+            height: 400px;
+            min-height: fit-content;
+            padding-top: 2rem;
+            margin-top: 1rem;
         }
 
-        th, td, img {
-            padding: 0;
-            width: 7px;
-            height: 7px;
+        section {
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
-        img {
-            display: block;
+        #outputContainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        canvas {
+            height: 200px;
+            width: 200px;
+            align-self: center;
         }
 
     </style>
 </head>
 <body>
 
-<div>
-    <h1>Image 2 minecraft</h1>
-    <p>Click on converted image to download</p>
-    <label for="imageUploadInput">File</label>
-    <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
-</div>
+<main class="container">
 
-<div id="outputContainer">
+    <section>
+        <hgroup>
+            <h1>Minecraft Tools</h1>
+            <h2>Image to Minecraft Converter</h2>
+         </hgroup>
+    </section>
 
-</div>
+    <section class="grid">
+        <article>
+            <h3>File Upload</h3>
+            <label for="imageUploadInput">
+                Upload image file
+                <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*"
+            </label>
+            <p>Click the converted image to download it.</p>
+        </article>
+        <article>
+            <h3>Output</h3>
+            <div id="outputContainer">
+                <canvas width="300" height="300"></canvas>
+            </div>
+        </article>
+    </section>
+</main>
 
 <script>
 
@@ -60,7 +86,11 @@
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
 
-        outputContainerElement.innerHTML = ''
+        const existingImage = document.querySelector('#outputContainer>canvas')
+
+        if (existingImage) {
+            existingImage.remove()
+        }
 
         const resultCanvas = await imageToMinecraft(imageFile)
         const randomFileName = (Math.random() + 1).toString(36).substring(7)
