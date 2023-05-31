@@ -9,3 +9,33 @@ canvas {
     image-rendering: crisp-edges;
     width: 60%;
 }
+
+main {
+    padding-top: 2rem !important;
+    padding-bottom: 0 !important;
+}
+
+article {
+    height: 400px;
+    min-height: fit-content;
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+section {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#outputContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+canvas {
+    height: 200px;
+    width: 200px;
+    align-self: center;
+}
