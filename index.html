@@ -33,12 +33,12 @@
                 Upload image file
                 <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
             </label>
-            <p>Click the converted image to download it.</p>
         </article>
         <article>
             <h2>Output</h2>
             <div id="outputContainer">
-                <canvas width="300" height="300"></canvas>
+                <canvas id="outputCanvas" width="300" height="300"></canvas>
+                <button>Download</button>
             </div>
         </article>
     </section>
@@ -47,29 +47,21 @@
 <script>
 
     const imageUploadInput = document.getElementById('imageUploadInput')
-    const outputContainerElement = document.querySelector('#outputContainer')
+    const outputCanvas = document.getElementById('outputCanvas')
 
-    const downloadCanvas = (canvas, name) => {
+    const downloadCanvas = canvas => {
+        const randomFileName = (Math.random() + 1).toString(36).substring(7)
+
         const downloadLink = document.createElement('a')
         downloadLink.href = canvas.toDataURL('image/png')
-        downloadLink.download = name
+        downloadLink.download = randomFileName
         downloadLink.click()
     }
 
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
-
-        const existingImage = document.querySelector('#outputContainer>canvas')
-
-        if (existingImage) {
-            existingImage.remove()
-        }
-
         const resultCanvas = await imageToMinecraft(imageFile)
-        const randomFileName = (Math.random() + 1).toString(36).substring(7)
-        resultCanvas.onclick = () => downloadCanvas(resultCanvas, randomFileName)
-
-        outputContainerElement.appendChild(resultCanvas)
+        outputCanvas.replaceWith(resultCanvas)
     }
 
 </script>

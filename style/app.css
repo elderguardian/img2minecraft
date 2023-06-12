@@ -18,7 +18,7 @@ main {
 }
 
 article {
-    height: 400px;
+    height: 450px;
     min-height: fit-content;
     padding-top: 2rem !important;
     margin-top: 1rem !important;
@@ -36,13 +36,31 @@ section {
     flex-direction: column;
 }
 
-li, li>hgroup {
-    height: 100%;
-    display: flex;
+li {
+    display: flex !important;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    line-height: 0;
 }
 
 .container {
     padding-top: 20px !important;
+}
+
+nav, ul, li {
+    height: 100px;
+}
+
+h1 {
+    margin: 0 !important;
+}
+
+#outputContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+canvas {
+    margin-bottom: 20px !important;
 }
