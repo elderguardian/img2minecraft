@@ -5,9 +5,10 @@ img {
     image-rendering: crisp-edges;
 }
 
-canvas {
+canvas, #outputContainer img {
     image-rendering: crisp-edges;
     height: 200px !important;
+    width: auto;
     align-self: center;
     margin-bottom: 20px !important;
 }
@@ -55,7 +56,7 @@ h1 {
     margin: 0 !important;
 }
 
-#outputContainer {
+#outputContainer div {
     display: flex;
     justify-content: center;
     margin: 0;
