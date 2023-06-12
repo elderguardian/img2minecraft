@@ -37,17 +37,20 @@
         <article>
             <h2>Output</h2>
             <div id="outputContainer">
-                <canvas id="outputCanvas" height="300"></canvas>
+                <div id="canvasContainer">
+                    <canvas height="300"></canvas>
+                </div>
                 <button>Download</button>
             </div>
         </article>
     </section>
+
 </main>
 
 <script>
 
     const imageUploadInput = document.getElementById('imageUploadInput')
-    const outputCanvas = document.getElementById('outputCanvas')
+    const canvasContainer = document.getElementById('canvasContainer')
 
     const downloadCanvas = canvas => {
         const randomFileName = (Math.random() + 1).toString(36).substring(7)
@@ -60,8 +63,10 @@
 
     const onImageChange = async () => {
         const imageFile = imageUploadInput.files[0]
+        canvasContainer.innerHTML = '<img alt="Loading circle" src="loading.gif">'
         const resultCanvas = await imageToMinecraft(imageFile)
-        outputCanvas.replaceWith(resultCanvas)
+        canvasContainer.innerHTML = ''
+        canvasContainer.appendChild(resultCanvas)
     }
 
 </script>
