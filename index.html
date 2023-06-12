@@ -40,7 +40,7 @@
                 <div id="canvasContainer">
                     <canvas height="300"></canvas>
                 </div>
-                <button>Download</button>
+                <button id="downloadButton">Download</button>
             </div>
         </article>
     </section>
@@ -51,6 +51,9 @@
 
     const imageUploadInput = document.getElementById('imageUploadInput')
     const canvasContainer = document.getElementById('canvasContainer')
+    const downloadButton = document.getElementById('downloadButton')
+
+    downloadButton.onclick = () => downloadCanvas(document.querySelector('#canvasContainer>canvas'))
 
     const downloadCanvas = canvas => {
         const randomFileName = (Math.random() + 1).toString(36).substring(7)
