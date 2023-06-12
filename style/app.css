@@ -8,8 +8,8 @@ img {
 canvas {
     image-rendering: crisp-edges;
     height: 200px !important;
-    width: 200px !important;
     align-self: center;
+    margin-bottom: 20px !important;
 }
 
 main {
@@ -59,8 +59,4 @@ h1 {
     display: flex;
     justify-content: center;
     margin: 0;
-}
-
-canvas {
-    margin-bottom: 20px !important;
 }
