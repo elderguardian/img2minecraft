@@ -61,3 +61,27 @@ h1 {
     justify-content: center;
     margin: 0;
 }
+
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#lightbox img {
+    height: 80%;
+    width: auto;
+}
+
+canvas:not(#emptyCanvas) {
+    cursor: pointer;
+}
