@@ -39,7 +39,7 @@
             <h2>Output</h2>
             <div id="outputContainer">
                 <div id="canvasContainer">
-                    <canvas height="300"></canvas>
+                    <canvas id="emptyCanvas" height="300"></canvas>
                 </div>
                 <button id="downloadButton">Download</button>
             </div>
@@ -56,6 +56,20 @@
     const lightBoxContainer = document.getElementById('lightbox')
 
     downloadButton.onclick = () => downloadCanvas(document.querySelector('#canvasContainer>canvas'))
+    lightBoxContainer.onclick = () => closeLightBox()
+
+    const closeLightBox = () => lightBoxContainer.style.display = 'none'
+
+    const openLightBox = canvas => {
+        lightBoxContainer.innerHTML = ''
+        lightBoxContainer.style.display = 'flex'
+
+        const dataUrl = canvas.toDataURL()
+        const img = document.createElement('img')
+        img.src = dataUrl
+
+        lightBoxContainer.appendChild(img)
+    }
 
     const downloadCanvas = canvas => {
         const randomFileName = (Math.random() + 1).toString(36).substring(7)
@@ -70,6 +84,7 @@
         const imageFile = imageUploadInput.files[0]
         canvasContainer.innerHTML = '<img alt="Loading circle" src="loading.gif">'
         const resultCanvas = await imageToMinecraft(imageFile)
+        resultCanvas.onclick = () => openLightBox(resultCanvas)
         canvasContainer.innerHTML = ''
         canvasContainer.appendChild(resultCanvas)
     }
