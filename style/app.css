@@ -63,7 +63,7 @@ h1 {
 }
 
 #lightbox {
-    display: block;
+    display: none;
     position: fixed;
     z-index: 3;
     top: 0;
@@ -72,4 +72,16 @@ h1 {
     bottom: 0;
     padding: 1em;
     background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#lightbox img {
+    height: 80%;
+    width: auto;
+}
+
+canvas:not(#emptyCanvas) {
+    cursor: pointer;
 }
