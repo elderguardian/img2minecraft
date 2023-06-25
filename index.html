@@ -2,34 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>YUI</title>
+    <title>img2minecraft</title>
     <script src="blockdata/blocks.js"></script>
     <script src="js/closestBlock.js"></script>
     <script src="js/mapArt.js"></script>
+    <link rel="stylesheet" href="style/bamboo-light.css">
     <link rel="stylesheet" href="style/app.css">
-    <link rel="stylesheet" href="pico/pico.min.css">
+    <link rel="icon" type="image/x-icon" href="logo.png">
 </head>
 <body>
-
-<main class="container">
-
-    <section id="headingSection">
-        <nav>
-            <ul>
-                <li><img alt="Logo" src="logo.png"></li>
-                <li><h1>img2minecraft</h1></li>
-            </ul>
-            <ul>
-                <li><a target="_blank" href="https://github.com/elderguardian/yui">GitHub</a></li>
-            </ul>
-        </nav>
+<main>
+    <section>
+        <h1><img width="25" height="25" alt="Logo" src="logo.png"> img2minecraft</h1>
     </section>
 
     <div id="lightbox"></div>
 
-    <section class="grid">
+    <section>
         <article>
-            <h2>File Upload</h2>
+            <h2>Upload image file</h2>
             <label for="imageUploadInput">
                 Upload image file
                 <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
@@ -45,9 +36,11 @@
             </div>
         </article>
     </section>
-
+    <footer>
+        <hr>
+        <a target="_blank" href="https://github.com/elderguardian/yui">GitHub</a>
+    </footer>
 </main>
-
 <script>
 
     const imageUploadInput = document.getElementById('imageUploadInput')
