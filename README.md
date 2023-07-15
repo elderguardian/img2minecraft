@@ -30,3 +30,5 @@ Just clone the repository into your webservers directory.
 
 **All the textures provided are owned by Mojang Studios. I do not claim any rights on these, and all the textures
 provided are used only for demonstration purposes!**
+
+**This is not an official Minecraft product and not approved by or associated with Mojang.**
