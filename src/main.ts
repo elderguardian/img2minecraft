@@ -31,7 +31,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <footer>
         <hr>
         This is not an official Minecraft product and not approved by or associated with Mojang. You can view the code at
-        <a target="_blank" href="https://github.com/elderguardian/yui">GitHub</a>.
+        <a target="_blank" href="https://github.com/elderguardian/img2minecraft">GitHub</a>.
     </footer>
 </main>
 `
