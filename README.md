@@ -1,5 +1,5 @@
 <div align="center" style="padding-top: 50px">
-    <img src="logo.png" alt="Logo">
+    <img src="public/logo.png" alt="Logo">
     <h1>img2minecraft</h1>
 </div>
 
@@ -22,9 +22,13 @@ to the minecraft block of the closest color.
 2. Choose an image file to upload
 3. Click on the generated image to download the result
 
-## Deployment
-This is pure HTML, CSS and vanilla JS.
-Just clone the repository into your webservers directory.
+## Development
+
+1. `git clone` this repository.
+2. `cd img2minecraft`
+3. `npm install`
+4. `npm run dev`
+
 
 <hr>
 
