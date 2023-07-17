@@ -1,88 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>img2minecraft</title>
-    <script src="blockdata/blocks.js"></script>
-    <script src="js/closestBlock.js"></script>
-    <script src="js/mapArt.js"></script>
-    <link rel="stylesheet" href="style/bamboo-light.css">
-    <link rel="stylesheet" href="style/app.css">
-    <link rel="icon" type="image/x-icon" href="logo.png">
-</head>
-<body>
-<main>
-    <section>
-        <h1><img width="25" height="25" alt="Logo" src="logo.png"> img2minecraft</h1>
-    </section>
-
-    <div id="lightbox"></div>
-
-    <section>
-        <article>
-            <h2>Upload image file</h2>
-            <label for="imageUploadInput">
-                Upload image file
-                <input id="imageUploadInput" onchange="onImageChange()" name="file" type="file" accept="image/*">
-            </label>
-        </article>
-        <article>
-            <h2>Output</h2>
-            <div id="outputContainer">
-                <div id="canvasContainer">
-                    <canvas id="emptyCanvas" height="300"></canvas>
-                </div>
-                <button id="downloadButton">Download</button>
-            </div>
-        </article>
-    </section>
-    <footer>
-        <hr>
-        This is not an official Minecraft product and not approved by or associated with Mojang. You can view the code at
-        <a target="_blank" href="https://github.com/elderguardian/yui">GitHub</a>.
-    </footer>
-</main>
-<script>
-
-    const imageUploadInput = document.getElementById('imageUploadInput')
-    const canvasContainer = document.getElementById('canvasContainer')
-    const downloadButton = document.getElementById('downloadButton')
-    const lightBoxContainer = document.getElementById('lightbox')
-
-    downloadButton.onclick = () => downloadCanvas(document.querySelector('#canvasContainer>canvas'))
-    lightBoxContainer.onclick = () => closeLightBox()
-
-    const closeLightBox = () => lightBoxContainer.style.display = 'none'
-
-    const openLightBox = canvas => {
-        lightBoxContainer.innerHTML = ''
-        lightBoxContainer.style.display = 'flex'
-
-        const dataUrl = canvas.toDataURL()
-        const img = document.createElement('img')
-        img.src = dataUrl
-
-        lightBoxContainer.appendChild(img)
-    }
-
-    const downloadCanvas = canvas => {
-        const randomFileName = (Math.random() + 1).toString(36).substring(7)
-
-        const downloadLink = document.createElement('a')
-        downloadLink.href = canvas.toDataURL('image/png')
-        downloadLink.download = randomFileName
-        downloadLink.click()
-    }
-
-    const onImageChange = async () => {
-        const imageFile = imageUploadInput.files[0]
-        canvasContainer.innerHTML = '<img alt="Loading circle" src="loading.gif">'
-        const resultCanvas = await imageToMinecraft(imageFile)
-        resultCanvas.onclick = () => openLightBox(resultCanvas)
-        canvasContainer.innerHTML = ''
-        canvasContainer.appendChild(resultCanvas)
-    }
-
-</script>
-</body>
+    <link rel="stylesheet" href="/bamboo-light.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

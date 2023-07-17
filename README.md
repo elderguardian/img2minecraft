@@ -1,5 +1,5 @@
 <div align="center" style="padding-top: 50px">
-    <img src="logo.png" alt="Logo">
+    <img src="public/logo.png" alt="Logo">
     <h1>img2minecraft</h1>
 </div>
 
