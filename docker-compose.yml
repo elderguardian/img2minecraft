@@ -1,0 +1,7 @@
+services:
+  img2minecraft:
+    ports:
+      - "3000:8090"
+    build:
+      context: .
+      dockerfile: "Dockerfile"
