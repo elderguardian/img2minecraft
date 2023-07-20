@@ -29,6 +29,14 @@ to the minecraft block of the closest color.
 3. `npm install`
 4. `npm run dev`
 
+### Docker
+
+##### **`docker-compose.yml`**
+```
+services:
+  img2minecraft:
+    image: ghcr.io/elderguardian/img2minecraft:latest
+```
 
 <hr>
 
