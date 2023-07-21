@@ -1,4 +1,5 @@
-import { IBlockMetadata, vanillaBlocks } from "./blocks.ts";
+import {IBlock, IBlockCollection} from "./core/blocks.ts";
+import {vanillaBlockCollection} from "./blockCollections/vanilla.ts";
 
 function srcOnCanvas(imageSource: string): Promise<{
   image: HTMLImageElement;
@@ -36,7 +37,7 @@ function rgbColorSimilarity(
 
 function mostSimilarBlock(
   searchedColor: number[],
-  blocks: IBlockMetadata[]
+  blocks: IBlock[]
 ): string {
   let closestBlockId: null | string = null;
   let closestBlockSimilarity: null | number = null;
@@ -66,7 +67,7 @@ function mostSimilarBlock(
 
 export async function imageToMinecraft(imageFile: File) {
   const canvas = await imageOnSmallCanvas(imageFile, 100, 100);
-  return await canvasToMinecraft(canvas, vanillaBlocks, "blocks/vanilla");
+  return await canvasToMinecraft(canvas, vanillaBlockCollection);
 }
 
 const scaleImageSize = (
@@ -126,8 +127,7 @@ const imageOnSmallCanvas = async (
 
 const canvasToMinecraft = async (
   canvas: HTMLCanvasElement,
-  blocks: IBlockMetadata[],
-  blocksPath: string
+  blockCollection: IBlockCollection
 ) => {
   const canvasContext = canvas.getContext("2d");
 
@@ -150,8 +150,8 @@ const canvasToMinecraft = async (
         pixelDataRgba[2],
       ];
 
-      const closestBlock = mostSimilarBlock(pixelDataRgb, blocks);
-      const blockImage = await srcOnCanvas(`${blocksPath}/${closestBlock}`);
+      const closestBlock = mostSimilarBlock(pixelDataRgb, blockCollection.blocks);
+      const blockImage = await srcOnCanvas(`${blockCollection.webPath}/${closestBlock}`);
 
       resultCanvasContext.drawImage(blockImage.image, row * 16, column * 16, 16, 16);
     }
