@@ -11,3 +11,14 @@ A simple tool that takes an image file as input and converts each pixel of the i
 2. **File Uplod**: Under the upload section, click on the upload button and choose an image.
 3. **Preview**: Click on the small image preview to make it larger. Click anywhere to exit the lightbox.
 4. **Download**: Click the download button under the image result.
+
+## Deployment using Docker
+
+#### **`docker-compose.yml`**
+```
+services:
+  img2minecraft:
+    ports:
+      - "9000:8090"
+    image: ghcr.io/elderguardian/img2minecraft:latest
+```
