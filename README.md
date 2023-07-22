@@ -22,3 +22,10 @@ services:
       - "9000:8090"
     image: ghcr.io/elderguardian/img2minecraft:latest
 ```
+
+## Development
+
+1. `git clone` this repository.
+2. `cd img2minecraft`
+3. `npm install`
+4. `npm run dev`
