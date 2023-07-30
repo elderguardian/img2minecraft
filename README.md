@@ -10,7 +10,7 @@ A simple tool that takes an image file as input and converts each pixel of the i
 
 ## Getting Started
 1. **Setup**: Visit the public instance or create your own.
-2. **File Uplod**: Under the upload section, click on the upload button and choose an image.
+2. **File Upload**: Under the upload section, click on the upload button and choose an image.
 3. **Preview**: Click on the small image preview to make it larger. Click anywhere to exit the lightbox.
 4. **Download**: Click the download button under the image result.
 
