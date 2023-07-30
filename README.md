@@ -14,24 +14,6 @@ A simple tool that takes an image file as input and converts each pixel of the i
 3. **Preview**: Click on the small image preview to make it larger. Click anywhere to exit the lightbox.
 4. **Download**: Click the download button under the image result.
 
-## Deployment using Docker
-
-#### **`docker-compose.yml`**
-```
-services:
-  img2minecraft:
-    ports:
-      - "9000:8090"
-    image: ghcr.io/elderguardian/img2minecraft:latest
-```
-
-## Development
-
-1. `git clone` this repository.
-2. `cd img2minecraft`
-3. `npm install`
-4. `npm run dev`
-
 <hr>
 
 **All the textures provided are owned by Mojang Studios. I do not claim any rights on these, and all the textures
