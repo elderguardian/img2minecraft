@@ -14,4 +14,4 @@ Please note that this is not an official Minecraft product and is not endorsed o
 
 <hr>
 
-[Code of Conduct](/CODE_OF_CONDUCT)
+[Code of Conduct](CODE_OF_CONDUCT)
