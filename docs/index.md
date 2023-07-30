@@ -9,9 +9,7 @@ It enables users to create Minecraft art from any image, seamlessly integrating 
 Please note that this is not an official Minecraft product and is not endorsed or affiliated with Mojang Studios.
 
 
-## [Installation Guide](DEPLOYMENT)
 
+## [GitHub Repository](https://github.com/elderguardian/img2minecraft) | [Installation Guide](DEPLOYMENT)
 
-<hr>
-
-[Code of Conduct](CODE_OF_CONDUCT)
+### [Code of Conduct](CODE_OF_CONDUCT)
