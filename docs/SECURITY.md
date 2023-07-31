@@ -6,9 +6,9 @@ output: html_document
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| v0.1.0   | :white_check_mark: |
+| Version  | Supported |
+|----------|-----------|
+| v0.1     | YES       |
 
 ## Reporting a Vulnerability
 
