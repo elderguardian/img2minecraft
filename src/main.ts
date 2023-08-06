@@ -1,5 +1,5 @@
 import './app.css'
-import {setupUploader} from "./convert.ts";
+import {setupUploader} from "./convert";
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
