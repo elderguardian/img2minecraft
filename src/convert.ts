@@ -1,4 +1,5 @@
-import {imageToMinecraft} from "./img2minecraft/img2minecraft.ts";
+import { ImageToMinecraftFactory } from "./img2minecraft/fassade/ImageToMinecraftFactory";
+import { vanillaBlockCollection } from "./img2minecraft/blockCollections/vanilla";
 
 export interface IUploaderElements {
   imageInput: HTMLInputElement;
@@ -18,14 +19,14 @@ function downloadCanvas(canvas: HTMLCanvasElement) {
 
 export function setupUploader(elements: IUploaderElements) {
   elements.downloadButton.onclick = () => {
-    const canvas = elements.canvasContainer.querySelector('canvas')
+    const canvas = elements.canvasContainer.querySelector("canvas");
 
     if (!canvas) {
-      throw new Error('Could not find canvas inside container')
+      throw new Error("Could not find canvas inside container");
     }
 
     downloadCanvas(canvas);
-  }
+  };
   elements.lightbox.onclick = () => (elements.lightbox.style.display = "none");
 
   elements.imageInput.onchange = async () => {
@@ -35,18 +36,23 @@ export function setupUploader(elements: IUploaderElements) {
       return;
     }
 
-    elements.canvasContainer.innerHTML = '<img alt="Loading circle" src="/loading.gif">';
+    elements.canvasContainer.innerHTML =
+      '<img alt="Loading circle" src="/loading.gif">';
 
-    const resultCanvas = await imageToMinecraft(imageFile);
+    const imageToMinecraft = new ImageToMinecraftFactory().create();
+    const resultCanvas = await imageToMinecraft.canvasFromFile(
+      imageFile,
+      vanillaBlockCollection
+    );
 
     resultCanvas.onclick = () => {
       elements.lightbox.innerHTML = "";
       elements.lightbox.style.display = "flex";
 
-      const canvas = elements.canvasContainer.querySelector('canvas')
+      const canvas = elements.canvasContainer.querySelector("canvas");
 
       if (!canvas) {
-        return
+        return;
       }
 
       const dataUrl = canvas.toDataURL();
