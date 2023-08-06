@@ -1,7 +1,4 @@
-export interface IBlock {
-  id: string;
-  rgb: [number, number, number];
-}
+import { IBlock } from "./IBlock";
 
 export interface IBlockCollection {
   webPath: string;
