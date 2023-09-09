@@ -1,5 +1,5 @@
 import { ImageToMinecraftFactory } from "./img2minecraft/fassade/ImageToMinecraftFactory";
-import { vanillaBlockCollection } from "./img2minecraft/blockCollections/vanilla";
+import { vanillaBlockCollection } from "./img2minecraft/blockCollections/vanilla-1.20.ts";
 
 export interface IUploaderElements {
   imageInput: HTMLInputElement;
