@@ -17,9 +17,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
                 Upload image file
                 <input id="imageUploadInput" name="file" type="file" accept="image/*">
             </label>
-            <label for="country">
+            <label for="blockPalettePicker">
                 Block Palette
-                <select id="country">
+                <select id="blockPalettePicker">
                     <option>Vanilla 1.20</option>
                 </select>
             </label>
