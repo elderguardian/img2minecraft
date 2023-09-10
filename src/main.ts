@@ -1,7 +1,7 @@
-import './app.css'
-import {setupUploader} from "./convert";
+import "./app.css";
+import { setupUploader } from "./convert";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
 <main>
     <section>
@@ -12,14 +12,20 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <section>
         <article>
-            <h2>Upload image file</h2>
+            <h2>Image Settings</h2>
             <label for="imageUploadInput">
                 Upload image file
                 <input id="imageUploadInput" name="file" type="file" accept="image/*">
             </label>
+            <label for="country">
+                Block Palette
+                <select id="country">
+                    <option>Vanilla 1.20</option>
+                </select>
+            </label>
         </article>
         <article>
-            <h2>Output</h2>
+            <h2>Image Output</h2>
             <div id="outputContainer">
                 <div id="canvasContainer">
                     <canvas id="emptyCanvas" height="300"></canvas>
@@ -34,11 +40,13 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <a target="_blank" href="https://github.com/elderguardian/img2minecraft">GitHub</a>.
     </footer>
 </main>
-`
+`;
 
 setupUploader({
-    imageInput: document.querySelector('#imageUploadInput') as HTMLInputElement,
-    downloadButton: document.querySelector('#downloadButton') as HTMLButtonElement,
-    canvasContainer: document.querySelector('#canvasContainer') as HTMLDivElement,
-    lightbox: document.querySelector('#lightbox') as HTMLDivElement,
-})
+  imageInput: document.querySelector("#imageUploadInput") as HTMLInputElement,
+  downloadButton: document.querySelector(
+    "#downloadButton"
+  ) as HTMLButtonElement,
+  canvasContainer: document.querySelector("#canvasContainer") as HTMLDivElement,
+  lightbox: document.querySelector("#lightbox") as HTMLDivElement,
+});
