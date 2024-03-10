@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 19
 
       - name: Install Dependencies
         run: npm install
@@ -29,3 +29,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          user_name: ${{ secrets.DEPLOYER_NAME }}
+          user_email: ${{ secrets.DEPLOYER_MAIL }}
