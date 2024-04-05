@@ -1,7 +1,3 @@
----
-output: html_document
----
-
 # img2minecraft
 
 This is a simple tool designed to convert image files into Minecraft blocks of corresponding colors. 

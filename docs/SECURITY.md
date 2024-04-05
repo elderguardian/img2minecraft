@@ -1,7 +1,3 @@
----
-output: html_document
----
-
 # Security Policy
 
 ## Supported Versions
