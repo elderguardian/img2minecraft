@@ -1,7 +1,7 @@
 import { IBlockCollection } from "../core/blocks/IBlockCollection.ts";
 
 export const vanillaBlockCollection: IBlockCollection = {
-  webPath: "/blocks/vanilla-1.20",
+  webPath: "/img2minecraft/blocks/vanilla-1.20",
   blocks: [
     { id: "yellow_wool.png", rgb: [249, 198, 40] },
     { id: "yellow_terracotta.png", rgb: [186, 133, 35] },
