@@ -5,7 +5,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
 <main>
     <section>
-        <h1><img width="25" height="25" alt="Logo" src="/logo.png"> img2minecraft</h1>
+        <h1><img width="25" height="25" alt="Logo" src="logo.png"> img2minecraft</h1>
     </section>
 
     <div id="lightbox"></div>
