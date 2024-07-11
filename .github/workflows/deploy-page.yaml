@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+      
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -26,7 +29,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          npm install -g gh-pages
+          gh-pages -d dist -t true -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
