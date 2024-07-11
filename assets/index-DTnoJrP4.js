@@ -2,7 +2,7 @@ var m=Object.defineProperty;var k=(o,r,g)=>r in o?m(o,r,{enumerable:!0,configura
 
 <main>
     <section>
-        <h1><img width="25" height="25" alt="Logo" src="/logo.png"> img2minecraft</h1>
+        <h1><img width="25" height="25" alt="Logo" src="logo.png"> img2minecraft</h1>
     </section>
 
     <div id="lightbox"></div>
