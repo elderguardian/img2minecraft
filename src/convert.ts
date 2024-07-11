@@ -37,7 +37,7 @@ export function setupUploader(elements: IUploaderElements) {
     }
 
     elements.canvasContainer.innerHTML =
-      '<img alt="Loading circle" src="/loading.gif">';
+      '<img alt="Loading circle" src="loading.gif">';
 
     const imageToMinecraft = new ImageToMinecraftFactory().create();
     const resultCanvas = await imageToMinecraft.canvasFromFile(
