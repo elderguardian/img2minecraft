@@ -1,7 +1,7 @@
 # img2minecraft
 A simple tool that takes an image file as input and converts each pixel of the image into a corresponding Minecraft block of the same color. It allows you to create Minecraft art from any image, bringing your favorite images into the blocky world of Minecraft.
 
-| [Public Instance](https://i2m.kagerou.dev/) | [Documentation](docs/index.md) |
+| [Public Instance](https://elderguardian.github.io/img2minecraft/) | [Documentation](docs/index.md) |
 |---------------------------------------------|--------------------------------|
 
 ![img2minecraft](https://github.com/elderguardian/img2minecraft/assets/129489839/f2d42795-2ef1-4a7e-b685-bfc93e808608)
